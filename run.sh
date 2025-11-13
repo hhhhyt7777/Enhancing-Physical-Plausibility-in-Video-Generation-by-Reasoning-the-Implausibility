@@ -1,13 +1,13 @@
 #!/bin/bash
 # ===== Wan2.1 视频生成脚本 =====
 
-python run_diffuser_vio.py \
-  --prompt_file ./config/phygen/prompt_force.txt \
-  --vio_prompt_file ./config/phygen/negative_force.txt \
-  --output_dir ./phygen_w10 \
-  --num_frames 25 \
-  --vio_scale 30.0 \
-  --start_num 0
+# python run_diffuser_vio.py \
+#   --prompt_file ./config/phygen/prompt_force.txt \
+#   --vio_prompt_file ./config/phygen/negative_force.txt \
+#   --output_dir ./phygen_w10 \
+#   --num_frames 25 \
+#   --vio_scale 30.0 \
+#   --start_num 0
 
 python run_diffuser_vio.py \
   --prompt_file ./config/phygen/prompt_light.txt \

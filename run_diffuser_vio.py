@@ -4,7 +4,7 @@ import torch
 from diffusers.utils import export_to_video
 from diffusers import AutoencoderKLWan, WanPipeline
 from diffusers.schedulers.scheduling_unipc_multistep import UniPCMultistepScheduler
-from custom_pipline import CustomWanPipeline
+from guidance_pipeline import CustomWanPipeline
 
 
 def parse_args():
