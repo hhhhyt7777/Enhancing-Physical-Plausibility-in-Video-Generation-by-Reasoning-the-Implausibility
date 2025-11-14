@@ -1,5 +1,6 @@
 import torch
 import os
+import argparse
 from diffusers.utils import export_to_video
 from diffusers import AutoencoderKLWan, WanPipeline
 from diffusers.schedulers.scheduling_unipc_multistep import UniPCMultistepScheduler
@@ -14,11 +15,11 @@ def parse_args():
                         help="输出视频保存目录")
 
     # 可选参数
-    parser.add_argument("--model_id", type=str, default="../../data/Wan2.1-T2V-14B-Diffusers")
+    parser.add_argument("--model_id", type=str, default="/data/Wan2.1-T2V-14B-Diffusers")
     parser.add_argument("--height", type=int, default=480)
     parser.add_argument("--width", type=int, default=720)
     parser.add_argument("--num_frames", type=int, default=25)
-    parser.add_argument("--guidance_scale", type=float, default=10.0)
+    parser.add_argument("--guidance_scale", type=float, default=8.0)
     parser.add_argument("--fps", type=int, default=8)
     parser.add_argument("--num_inference_steps", type=int, default=50)
     parser.add_argument("--flow_shift", type=float, default=3.0, help="480p=3.0, 720p=5.0")
@@ -42,7 +43,7 @@ def main():
         flow_shift=args.flow_shift
     )
 
-    pipe = WanPipeline.from_pretrained(model_id, vae=vae, torch_dtype=torch.bfloat16)
+    pipe = WanPipeline.from_pretrained(args.model_id, vae=vae, torch_dtype=torch.bfloat16)
     pipe.scheduler = scheduler
 
     # 内存优化
@@ -59,15 +60,14 @@ def main():
 
     # ====== 批量生成 ======
     for i, prompt in enumerate(prompts):
-    print(f"Generating video {i+1+num}: {prompt}")
-    output = pipe(
-        prompt=prompt,
-        negative_prompt=negative_prompt,
-        height=height,
-        width=width,
-        num_frames=num_frames,
-        guidance_scale=guidance_scale,
-        ).frames[0]
+        print(f"Generating video {i+1+num}: {prompt}")
+        output = pipe(
+            prompt=prompt,
+            height=args.height,
+            width=args.width,
+            num_frames=args.num_frames,
+            guidance_scale=args.guidance_scale,
+            ).frames[0]
 
         save_path = os.path.join(args.output_dir, f"video_{i+1+num}.mp4")
         export_to_video(output, save_path, fps=args.fps)

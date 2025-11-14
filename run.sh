@@ -4,34 +4,34 @@
 # python run_diffuser_vio.py \
 #   --prompt_file ./config/phygen/prompt_force.txt \
 #   --vio_prompt_file ./config/phygen/negative_force.txt \
-#   --output_dir ./phygen_w10 \
+#   --output_dir /workspace/phygen_w10 \
 #   --num_frames 25 \
 #   --vio_scale 30.0 \
 #   --start_num 0
 
-python run_diffuser_vio.py \
-  --prompt_file ./config/phygen/prompt_light.txt \
-  --vio_prompt_file ./config/phygen/negative_light_GPT.txt \
-  --output_dir ./phygen_w10 \
-  --num_frames 25 \
-  --vio_scale 30.0 \
-  --start_num 40
+# python run_diffuser_vio.py \
+#   --prompt_file ./config/phygen/prompt_light.txt \
+#   --vio_prompt_file ./config/phygen/negative_light_GPT.txt \
+#   --output_dir /workspace/phygen_w10 \
+#   --num_frames 25 \
+#   --vio_scale 30.0 \
+#   --start_num 40
 
-python run_diffuser_vio.py \
-  --prompt_file ./config/phygen/prompt_heat.txt \
-  --vio_prompt_file ./config/phygen/heat-GPT-V2.txt \
-  --output_dir ./phygen_w10 \
-  --num_frames 25 \
-  --vio_scale 30.0 \
-  --start_num 90
+# python run_diffuser_vio.py \
+#   --prompt_file ./config/phygen/prompt_heat.txt \
+#   --vio_prompt_file ./config/phygen/heat-GPT-V2.txt \
+#   --output_dir /workspace/phygen_w10 \
+#   --num_frames 25 \
+#   --vio_scale 30.0 \
+#   --start_num 90
 
-python run_diffuser_vio.py \
-  --prompt_file ./config/phygen/prompt_material.txt \
-  --vio_prompt_file ./config/phygen/negative_material.txt \
-  --output_dir ./phygen_w10 \
-  --num_frames 25 \
-  --vio_scale 30.0 \
-  --start_num 120
+# python run_diffuser_vio.py \
+#   --prompt_file ./config/phygen/prompt_material.txt \
+#   --vio_prompt_file ./config/phygen/negative_material.txt \
+#   --output_dir /workspace/phygen_w10 \
+#   --num_frames 25 \
+#   --vio_scale 30.0 \
+#   --start_num 120
 
 # python run_diffuser_vio.py \
 #   --prompt_file ./config/videophy/fluid_fluid.txt \
@@ -57,28 +57,29 @@ python run_diffuser_vio.py \
 #   --vio_scale 30.0 \
 #   --start_num 201
 
+
 python run_diffuser.py \
   --prompt_file ./config/phygen/prompt_force.txt \
-  --output_dir ./phygen_ori_w10 \
-  --num_frames 25
+  --output_dir /workspace/phygen_ori_w10 \
+  --num_frames 25 \
   --start_num 0
 
 python run_diffuser.py \
   --prompt_file ./config/phygen/prompt_light.txt \
-  --output_dir ./phygen_ori_w10 \
-  --num_frames 25
+  --output_dir /workspace/phygen_ori_w10 \
+  --num_frames 25 \
   --start_num 40
 
 python run_diffuser.py \
   --prompt_file ./config/phygen/prompt_heat.txt \
-  --output_dir ./phygen_ori_w10 \
-  --num_frames 25
+  --output_dir /workspace/phygen_ori_w10 \
+  --num_frames 25 \
   --start_num 90
 
 python run_diffuser.py \
   --prompt_file ./config/phygen/prompt_material.txt \
-  --output_dir ./phygen_ori_w10 \
-  --num_frames 25
+  --output_dir /workspace/phygen_ori_w10 \
+  --num_frames 25 \
   --start_num 120
 
 # python run_diffuser.py \
