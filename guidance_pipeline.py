@@ -360,7 +360,10 @@ class CustomWanPipeline(WanPipeline):
                         attention_kwargs=attention_kwargs,
                         return_dict=False,
                     )[0]
-                    vio_noise_pred = vio_noise_uncond + guidance_scale * (vio_noise_pred - vio_noise_uncond)
+                    # ori
+                    # vio_noise_pred = vio_noise_uncond + guidance_scale * (vio_noise_pred - vio_noise_uncond)
+                    vio_noise_pred = noise_uncond + guidance_scale * (vio_noise_pred - vio_noise_uncond)
+                    
 
                 # compute the previous noisy sample x_t -> x_t-1
                 vio_latents = vio_scheduler.step(vio_noise_pred, t, vio_latents, return_dict=False)[0]
@@ -368,7 +371,7 @@ class CustomWanPipeline(WanPipeline):
                 if self._external_cond_fn:
                     delta = (noise_pred - vio_noise_pred)
                     delta = delta / (delta.norm() + 1e-6)  # 归一化
-                    noise_pred = noise_pred + 30 * delta
+                    noise_pred = noise_pred + vio_scale * delta
 
 
                 if callback_on_step_end is not None:
