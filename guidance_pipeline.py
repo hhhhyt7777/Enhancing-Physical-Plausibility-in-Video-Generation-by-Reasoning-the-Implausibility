@@ -258,7 +258,7 @@ class CustomWanPipeline(WanPipeline):
 
         # vio Encode input prompt
         vio_prompt_embeds, vio_negative_prompt_embeds = self.encode_prompt(
-            prompt=prompt,
+            prompt=vio_prompt,
             negative_prompt=negative_prompt,
             do_classifier_free_guidance=self.do_classifier_free_guidance,
             num_videos_per_prompt=num_videos_per_prompt,
