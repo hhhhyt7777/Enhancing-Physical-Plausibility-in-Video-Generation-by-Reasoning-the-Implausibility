@@ -23,7 +23,7 @@ def parse_args():
     parser.add_argument("--height", type=int, default=480)
     parser.add_argument("--width", type=int, default=720)
     parser.add_argument("--num_frames", type=int, default=25)
-    parser.add_argument("--guidance_scale", type=float, default=8.0)
+    parser.add_argument("--guidance_scale", type=float, default=11.0)
     parser.add_argument("--vio_scale", type=float, default=30.0)
     parser.add_argument("--fps", type=int, default=8)
     parser.add_argument("--num_inference_steps", type=int, default=50)
@@ -86,7 +86,8 @@ def main():
                 width=args.width,
                 num_frames=args.num_frames,
                 guidance_scale=args.guidance_scale,
-                num_inference_steps=args.num_inference_steps
+                num_inference_steps=args.num_inference_steps,
+                vio_scale=args.vio_scale
             ).frames[0]
 
         save_path = os.path.join(args.output_dir, f"video_{i+1+num}.mp4")

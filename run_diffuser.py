@@ -19,7 +19,7 @@ def parse_args():
     parser.add_argument("--height", type=int, default=480)
     parser.add_argument("--width", type=int, default=720)
     parser.add_argument("--num_frames", type=int, default=25)
-    parser.add_argument("--guidance_scale", type=float, default=8.0)
+    parser.add_argument("--guidance_scale", type=float, default=14.0)
     parser.add_argument("--fps", type=int, default=8)
     parser.add_argument("--num_inference_steps", type=int, default=50)
     parser.add_argument("--flow_shift", type=float, default=3.0, help="480p=3.0, 720p=5.0")
